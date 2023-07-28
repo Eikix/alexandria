@@ -1,4 +1,4 @@
-use alexandria::math::{pow, math::BitShift, count_digits_of_base};
+use alexandria::math::{pow, math::BitShift, count_digits_of_base, pow_felt252};
 
 // Test power function
 #[test]
@@ -8,6 +8,17 @@ fn pow_test() {
     assert(pow(2, 1) == 2, 'invalid result');
     assert(pow(2, 12) == 4096, 'invalid result');
     assert(pow(5, 9) == 1953125, 'invalid result');
+}
+
+// Test power function
+#[test]
+#[available_gas(2000000)]
+fn pow_felt252_test() {
+    assert(pow_felt252(2, 0) == 1, 'invalid result');
+    assert(pow_felt252(2, 1) == 2, 'invalid result');
+    assert(pow_felt252(2, 12) == 4096, 'invalid result');
+    assert(pow_felt252(5, 9) == 1953125, 'invalid result');
+    assert(pow_felt252(256, 15) == 1329227995784915872903807060280344576, 'invalid result');
 }
 
 // Test counting of number of digits function

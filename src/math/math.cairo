@@ -14,6 +14,22 @@ fn pow(base: u128, mut exp: u128) -> u128 {
     }
 }
 
+
+/// Raise a number to a power.
+/// * `base` - The number to raise.
+/// * `exp` - The exponent.
+/// # Returns
+/// * `felt252` - The result of base raised to the power of exp.
+/// In most situations, prefer the `pow` function instead. 
+/// Usage of low-level type felt252 is discouraged.
+fn pow_felt252(base: felt252, exp: felt252) -> felt252 {
+    if exp == 0 {
+        1
+    } else {
+        base * pow_felt252(base, exp - 1)
+    }
+}
+
 /// Function to count the number of digits in a number.
 /// # Arguments
 /// * `num` - The number to count the digits of.
